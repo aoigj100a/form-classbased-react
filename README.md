@@ -21,12 +21,16 @@
 `npm start`
 
 ### 問題與解決
-
+- [原生的程式碼如何驗證表單](https://adostes.medium.com/validating-a-form-in-react-cc29d47e140f)
+- [每個表單都要寫事件處理器實在很可怕 ->學習使用 formik 處理](https://formik.org/docs/overview)
 
 ### 參考資料
  - [react form](https://reactjs.org/docs/forms.html)
  - [不可控元件(Uncontrolled Components)](https://reactjs.org/docs/uncontrolled-components.html)
  - [HTML File API](https://developer.mozilla.org/en-US/docs/Web/API/File/)
+
+### 關鍵字
+- react validation form example
  
 
 ## 專案開發人員
