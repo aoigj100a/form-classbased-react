@@ -1,41 +1,69 @@
 import React from 'react';
 
-class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: '' };
+import FormVanilla from "./FormVanilla";
+// import FormFormik from "./FormFormik";
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+const nameValidation = (fieldName, fieldValue) => {
+  if (fieldValue.trim() === "") {
+    return `${fieldName} is required`;
   }
-
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  if (/[^a-zA-Z -]/.test(fieldValue)) {
+    return "Invalid characters";
   }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
+  if (fieldValue.trim().length < 3) {
+    return `${fieldName} needs to be at least three characters`;
   }
+  return null;
+};
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+const emailValidation = email => {
+  if (
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+      email
     )
+  ) {
+    return null;
   }
-}
+  if (email.trim() === "") {
+    return "Email is required";
+  }
+  return "Please enter a valid email";
+};
+
+const ageValidation = age => {
+  if (!age) {
+    return "Age is required";
+  }
+  if (age < 18) {
+    return "Age must be at least 18";
+  }
+  if (age > 99) {
+    return "Age must be under 99";
+  }
+  return null;
+};
+
+const validate = {
+  firstName: name => nameValidation("First Name", name),
+  lastName: name => nameValidation("Last Name", name),
+  email: emailValidation,
+  age: ageValidation
+};
+
+const initialValues = {
+  age: 10,
+  email: "no@email",
+  firstName: "Mary",
+  lastName: "Jane"
+};
+
+
 
 function App() {
   return (
     <>
       <div className="test"><h1>hello word to big.</h1></div>
-      <Form />
+      <FormVanilla validate={validate} initialValues={initialValues} />
     </>
   );
 }
