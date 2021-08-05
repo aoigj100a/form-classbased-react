@@ -19,6 +19,8 @@ function Form({
         </ul>
       </div>
       <form onSubmit={handleSubmit} autoComplete="off">
+      <fieldset>
+      <legend>user info</legend>
         <div className="form-group">
           <label htmlFor="first-name-input">
             First Name *
@@ -93,6 +95,7 @@ function Form({
             Submit
           </button>
         </div>
+        </fieldset>
       </form>
     </div>
   );

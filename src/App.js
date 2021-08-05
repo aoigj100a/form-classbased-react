@@ -1,7 +1,5 @@
 import React from 'react';
-
 import FormVanilla from "./FormVanilla";
-// import FormFormik from "./FormFormik";
 
 const nameValidation = (fieldName, fieldValue) => {
   if (fieldValue.trim() === "") {
@@ -56,8 +54,6 @@ const initialValues = {
   firstName: "Mary",
   lastName: "Jane"
 };
-
-
 
 function App() {
   return (
